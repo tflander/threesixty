@@ -23,10 +23,7 @@ describe("server", () => {
 
   describe("storing a turn command", () => {
     it("stores a left turn command", async () => {
-      await axios.post(`${base_url}command`,
-        {
-          direction: 'left'
-        });
+      await pushCommandDirection('left');
 
       let { data } = await axios.get(`${base_url}command`);
 
@@ -35,23 +32,24 @@ describe("server", () => {
     });
 
     it("stores a right turn command", async () => {
-      await axios.post(`${base_url}command`,
-        {
-          direction: 'right'
-        });
+      await pushCommandDirection('right');
       let { data } = await axios.get(`${base_url}command`);
       expect(data).toBe('right');
     })
   });
 
   it('clears after one call', async() => {
-    await axios.post(`${base_url}command`,
-      {
-        direction: 'right'
-      });
+    await pushCommandDirection('right');
     await axios.get(`${base_url}command`);
     let { data } = await axios.get(`${base_url}command`);
 
     expect(data).toBe('');
   });
 });
+
+async function pushCommandDirection(newLocal) {
+  await axios.post(`${base_url}command`, {
+    direction: newLocal
+  });
+}
+
