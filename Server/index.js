@@ -12,6 +12,7 @@ app.get('/', (req, res) => {
 
 app.get('/command', (req, res) => {
     res.send(direction);
+    direction = ''
 })
 
 app.post('/command', (req, res) => {
