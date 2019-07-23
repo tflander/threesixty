@@ -1,3 +1,3 @@
-const frontend = require('./frontend');
+import * as client from './client'
 
-frontend();
+client.log(console.log);
