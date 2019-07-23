@@ -1,27 +1,38 @@
 import * as client from '../views/scripts/client';
-const axios = require('axios');
+import * as axios from 'axios';
+
 var base_url = "http://localhost:3000/"
 
 describe('The Client Javscript module', () => {
-    it('logs a command', () => {
-        let logger = (message) => expect(message).toBe('hello world');
-        client.log(logger);
-    });
-
     it('accepts a string command', async () => {
         const response = await client.post('moveLeft', mockPost);
         expect(response.status).toBe(200);
     });
-    
-    it('should do a post', async () =>  {
+
+    it('should do a post', async () => {
         const response = await client.post('something', mockPost);
         let { data } = await axios.get(`${base_url}command`);
         expect(data).toBe('something');
     });
 });
 
+describe('The user interaction handler', () => {
+    it('should return the buttons direction', ()  => {
+        expect(client.getDirectionPayload(fakeEvent).direction, 'left');
+    });
+});
+
+
+const fakeEvent = {
+    target: {
+        "dataset": {
+            "action": "left"
+        }
+    }
+};
+
 const mockPost = (message) => {
     return axios.post(`${base_url}command`, {
         direction: message
-      });
+    });
 }

@@ -1,7 +1,6 @@
 const path = require('path');
 
 module.exports = {
-    watch: true,
     mode: 'development',
     entry: './views/scripts/main.js',
     output: {

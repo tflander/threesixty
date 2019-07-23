@@ -1,10 +1,31 @@
 import * as client from './client'
 
-client.log(console.log);
+const URL = '/command';
+const SELECTORS = [
+    '.most-left',
+    '.more-left',
+    '.left',
+    '.right',
+    '.more-right',
+    '.most-right'
+];
 
-// postMessage = (message) => {
-//     fetch({
-//         url: 'http://example.com/movies.json',
-//         method: 'POST',
-        // body: message})
-// }
+function postMessage(message) {
+    return fetch(URL, {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body: message
+    });
+}
+
+(function () {
+    SELECTORS.map((selector) => {
+        const $element = document.querySelector(selector);
+        if ($element) {
+            $element.addEventListener('click', client.createButtonClickHandler(postMessage));
+        }
+    });
+})();
