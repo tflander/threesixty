@@ -2,10 +2,12 @@ import * as client from './client'
 
 const URL = '/command';
 const SELECTORS = [
+    '.most-left',
     '.more-left',
     '.left',
     '.right',
     '.more-right',
+    '.most-right'
 ];
 
 function postMessage(message) {
