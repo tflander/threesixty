@@ -12,8 +12,8 @@ app.get('/', (req, res) => {
     res.sendFile("./views/index.html", {root: __dirname });
 })
 
-app.get('/scripts/frontend.js', (req, res) => {
-    res.sendFile("./views/scripts/frontend.js", {root: __dirname });
+app.get('/static/bundle.js', (req, res) => {
+    res.sendFile("./static/bundle.js", {root: __dirname });
 })
 
 app.get('/command', (req, res) => {
