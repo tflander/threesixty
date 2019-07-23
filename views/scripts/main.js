@@ -6,5 +6,6 @@ client.log(console.log);
 //     fetch({
 //         url: 'http://example.com/movies.json',
 //         method: 'POST',
-        // body: message})
+//         body: message
+//     })
 // }
