@@ -7,16 +7,33 @@ MIN_COUNTERCLOCKWISE = 72
 MAX_COUNTERCLOCKWISE = 39
 SLOW = 100
 
+SMALL_TURN = 100
+MEDIUM_TURN = 500
+LARGE_TURN = 1000
+
 class Platr:
 
     def __init__(self, servoPinNumber):
         self.servo = machine.PWM(machine.Pin(servoPinNumber), freq=50)
+        self.servo.duty(STOP)
+
+    def rotateClockwiseSmall(self):
+        self._rotateWithDelay(SMALL_TURN, 0, isClockwise=True)
+
+    def rotateCounterClockwiseSmall(self):
+        self._rotateWithDelay(SMALL_TURN, 0, isClockwise=False)
 
     def rotateClockwiseMedium(self):
-        self.servo.duty(MIN_CLOCKWISE)
+        self._rotateWithDelay(MEDIUM_TURN, 0, isClockwise=True)
 
     def rotateCounterClockwiseMedium(self):
-        self.servo.duty(MIN_COUNTERCLOCKWISE)
+        self._rotateWithDelay(MEDIUM_TURN, 0, isClockwise=False)
+
+    def rotateClockwiseLarge(self):
+        self._rotateWithDelay(LARGE_TURN, 0, isClockwise=True)
+
+    def rotateCounterClockwiseLarge(self):
+        self._rotateWithDelay(LARGE_TURN, 0, isClockwise=False)
 
     def stop(self):
         self.servo.duty(STOP)
@@ -24,32 +41,14 @@ class Platr:
     def _rotateWithDelay(self, rotateTimeMs, stopTimeMs, isClockwise=True):
 
         if isClockwise:
-            self.rotateClockwiseMedium()
+            self.servo.duty(MIN_CLOCKWISE)
         else:
-            self.rotateCounterClockwiseMedium()
+            self.servo.duty(MIN_COUNTERCLOCKWISE)
 
         time.sleep_ms(rotateTimeMs)
         self.stop()
         time.sleep_ms(stopTimeMs)
 
-    def _rotateSlowWithDelay(self, rotateTimeMs, stopTimeMs, isClockwise=True):
-        while True:
-            self._rotateWithDelay(rotateTimeMs, stopTimeMs, isClockwise)
-
-    def nudgeClockwise(self):
-        self._rotateWithDelay(SLOW, SLOW, isClockwise = True)
-
-    def nudgeCounterClockwise(self):
-        self._rotateWithDelay(SLOW, SLOW, isClockwise = False)
-
-    def rotateClockwiseSlow(self):
-        self._rotateSlow(isClockwise=True)
-
-    def rotateCounterlockwiseSlow(self):
-        self._rotateSlow(isClockwise=False)
-
-    def _rotateSlow(self, isClockwise=True):
-        self._rotateSlowWithDelay(SLOW, SLOW, isClockwise)
 
     import _thread
     def _rotateClockwiseSlowAsync(self):

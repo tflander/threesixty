@@ -18,39 +18,46 @@ turntable = platr.Platr(servoPinNumber=22)
 
 localAddress, ipConfiguration = wifiConnect('TheForge', 'speed2VALUE!')
 
-commands = ["clockwiseMedium", "clockwiseNudge", "stop", "counterClockwiseMedium", "counterClockwiseNudge"]
+commands = ["clockwiseSmall", "clockwiseMedium", "clockwiseLarge", "stop", "counterClockwiseSmall",
+            "counterClockwiseMedium", "counterClockwiseLarge"]
+
+
 def handleResponse(command):
     if len(command) == 0:
-        print('no commands queued')
+        print("no commands queued")
         return
     else:
         print(command)
-        if command == "clockwiseSlow":
-            turntable.rotateClockwiseSlow()
+        if command == "clockwiseSmall":
+            turntable.rotateClockwiseSmall()
         elif command == "clockwiseMedium":
             turntable.rotateClockwiseMedium()
-        elif command == "clockwiseNudge":
-            turntable.nudgeClockwise()
+        elif command == "clockwiseLarge":
+            turntable.rotateClockwiseLarge()
         elif command == "stop":
             turntable.stop()
-        elif command == "counterClockwiseSlow":
-            turntable.rotateCounterlockwiseSlow()
+        elif command == "counterClockwiseSmall":
+            turntable.rotateCounterClockwiseSmall()
         elif command == "counterClockwiseMedium":
             turntable.rotateCounterClockwiseMedium()
-        elif command == "counterClockwiseNudge":
-            turntable.nudgeCounterClockwise()
+        elif command == "counterClockwiseLarge":
+            turntable.rotateCounterClockwiseLarge()
         else:
             print("unrecognized command " + command)
-
+            turntable.stop()
 
 
 import random
+
+
 def randomCommand():
     return commands[random.randrange(0, len(commands))]
+
 
 import urequests
 
 while True:
+
     response = urequests.get('https://gentle-plains-83953.herokuapp.com/command')
 
     if 200 == response.status_code:
@@ -58,4 +65,4 @@ while True:
     # handleResponse(randomCommand())
 
     # response.close()
-    time.sleep(1)
+    time.sleep_ms(500)
