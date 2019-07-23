@@ -12,6 +12,10 @@ const SELECTORS = [
 
 function postMessage(message) {
     return fetch(URL, {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
         method: 'POST',
         body: message
     });
