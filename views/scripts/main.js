@@ -1,6 +1,6 @@
 import * as client from './client'
 
-const URL = 'http://localhost:3000/command';
+const URL = '/command';
 const SELECTORS = [
     '.more-left',
     '.left',
