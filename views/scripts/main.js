@@ -1,11 +1,25 @@
 import * as client from './client'
 
-client.log(console.log);
+const URL = 'http://localhost:3000/command';
+const SELECTORS = [
+    '.more-left',
+    '.left',
+    '.right',
+    '.more-right',
+];
 
-// postMessage = (message) => {
-//     fetch({
-//         url: 'http://example.com/movies.json',
-//         method: 'POST',
-//         body: message
-//     })
-// }
+function postMessage(message) {
+    return fetch(URL, {
+        method: 'POST',
+        body: message
+    });
+}
+
+(function () {
+    SELECTORS.map((selector) => {
+        const $element = document.querySelector(selector);
+        if ($element) {
+            $element.addEventListener('click', client.createButtonClickHandler(postMessage));
+        }
+    });
+})();

@@ -16,6 +16,21 @@ describe('The Client Javscript module', () => {
     });
 });
 
+describe('The user interaction handler', () => {
+    it('should return the buttons direction', ()  => {
+        expect(client.getDirection(fakeEvent), 'left');
+    });
+});
+
+
+const fakeEvent = {
+    target: {
+        "dataset": {
+            "action": "left"
+        }
+    }
+};
+
 const mockPost = (message) => {
     return axios.post(`${base_url}command`, {
         direction: message
