@@ -9,11 +9,15 @@ direction = '';
 app.use(express.json())
 
 app.get('/', (req, res) => {
-    res.sendFile("./views/index.html", {root: __dirname });
+    res.sendFile("./views/index.html", { root: __dirname });
 })
 
 app.get('/static/bundle.js', (req, res) => {
-    res.sendFile("./static/bundle.js", {root: __dirname });
+    res.sendFile("./static/bundle.js", { root: __dirname });
+})
+
+app.get('/static/style.css', (req, res) => {
+    res.sendFile('./views/styles/style.css', { root: __dirname });
 })
 
 app.get('/command', (req, res) => {

@@ -1,25 +1,23 @@
 <html>
-    <head>
-        <title>Demo</title>
-        <style>
-            iframe {
-                width: 90%;
-                height: 90%;
-            }
-        </style>
-    </head>
-    <body>
-        <iframe src="https://zoom.us/wc/534752326/join" allow="microphone; camera; speaker;"></iframe>
-        <div>
-            <button class="most-left" data-action="counterClockwiseLarge">&lt;&lt;&lt;</button>
-            <button class="more-left" data-action="counterClockwiseMedium">&lt;&lt;</button>
-            <button class="left" data-action="counterClockwiseSmall">&lt;</button>
-            <button class="right" data-action="clockwiseSmall">&gt;</button>
-            <button class="more-right" data-action="clockwiseMedium">&gt;&gt;</button>
-            <button class="most-right" data-action="clockwiseLarge">&gt;&gt;&gt;</button>
-        </div>
-        <footer>
-            <script src="/static/bundle.js"></script>
-        </footer>
-    </body>
-</html> 
+
+<head>
+    <title>Demo</title>
+    <link rel="stylesheet" href="static/style.css" />
+</head>
+
+<body>
+    <iframe src="https://zoom.us/wc/534752326/join" allow="microphone; camera; speaker;"></iframe>
+    <div class="button-wrapper">
+        <button class="most-left most" data-action="counterClockwiseLarge">&lt;&lt;&lt;</button>
+        <button class="more-left more" data-action="counterClockwiseMedium">&lt;&lt;</button>
+        <button class="left normal" data-action="counterClockwiseSmall">&lt;</button>
+        <button class="right normal" data-action="clockwiseSmall">&gt;</button>
+        <button class="more-right more" data-action="clockwiseMedium">&gt;&gt;</button>
+        <button class="most-right most" data-action="clockwiseLarge">&gt;&gt;&gt;</button>
+    </div>
+    <footer>
+        <script src="/static/bundle.js"></script>
+    </footer>
+</body>
+
+</html>
