@@ -2,6 +2,7 @@ import ActionBuffer from '../views/util/ActionBuffer';
 
 describe('The Action Buffer Class', function () {
     let buffer;
+
     beforeEach(() => {
         buffer = new ActionBuffer();
     });
@@ -17,12 +18,14 @@ describe('The Action Buffer Class', function () {
 
 describe('The Push Method', function () {
     let buffer;
+
     beforeEach(() => {
         buffer = new ActionBuffer();
     });
 
     it('should allow items to be pushed to the queue', () => {
         buffer.push('some value');
+
         expect(buffer.getSize()).toBe(1);
     });
 
@@ -32,6 +35,7 @@ describe('The Push Method', function () {
         buffer.push('some value');
         buffer.push('some value');
         buffer.push('some value');
+
         expect(buffer.getSize()).toBe(3);
     });
 
@@ -41,12 +45,14 @@ describe('The Push Method', function () {
         buffer.push('expected value');
         buffer.push('newer value');
         buffer.push('newest value');
+
         expect(buffer.pop()).toBe('expected value');
     });
 });
 
 describe('The Pop Method', function () {
     let buffer;
+
     beforeEach(() => {
         buffer = new ActionBuffer();
     });
@@ -55,6 +61,16 @@ describe('The Pop Method', function () {
         buffer.push('oldest value');
         buffer.push('middle value');
         buffer.push('newest value');
+
         expect(buffer.pop()).toBe('oldest value');
+    });
+
+    it('should adjust the length of the queue', () => {
+        buffer.push('oldest value');
+        buffer.push('middle value');
+        buffer.push('newest value');
+        buffer.pop();
+
+        expect(buffer.getSize()).toBe(2);
     });
 });
