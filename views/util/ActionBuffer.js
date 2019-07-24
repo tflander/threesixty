@@ -1,8 +1,8 @@
 const maxSizeSymbol = Symbol("Max Size");
 
 export default class ActionBuffer {
-    constructor() {
-        this[maxSizeSymbol] = 3;
+    constructor(maxSize=3) {
+        this[maxSizeSymbol] = maxSize;
     }
     getMaxSize() {
         return this[maxSizeSymbol];
