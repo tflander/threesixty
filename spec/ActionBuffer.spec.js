@@ -74,3 +74,24 @@ describe('The Pop Method', function () {
         expect(buffer.getSize()).toBe(2);
     });
 });
+
+
+describe('The reset method', function () {
+    let buffer;
+
+    beforeEach(() => {
+        buffer = new ActionBuffer();
+        buffer.push('some value');
+        buffer.push('some value');
+        buffer.push('some value');
+        buffer.reset();
+    });
+
+    it('Should still have a default maxSize of 3', () => {
+        expect(buffer.getMaxSize()).toBe(3);
+    });
+
+    it('should reset to an empty queue', () => {
+        expect(buffer.getSize()).toBe(0);
+    });
+});

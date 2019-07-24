@@ -4,7 +4,7 @@ const queueSymbol = Symbol('queue')
 export default class ActionBuffer {
     constructor(maxSize=3) {
         this[maxSizeSymbol] = maxSize;
-        this[queueSymbol] = [];
+        this[queueSymbol] = new Array();
     }
 
     getSize () {
@@ -24,5 +24,9 @@ export default class ActionBuffer {
 
     pop () {
         return this[queueSymbol].shift();
+    }
+
+    reset () {
+        this[queueSymbol] = new Array();
     }
 }
