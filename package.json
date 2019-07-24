@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jasmine",
+    "start": "nodemon --exec babel-node index.js",
     "build": "webpack",
     "watch": "webpack --watch"
   },
@@ -14,7 +15,12 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
     "axios": "^0.19.0",
+    "babel-cli": "^6.26.0",
     "jasmine-es6": "^0.4.3",
     "nodemon": "^1.19.1",
     "webpack": "^4.37.0",
