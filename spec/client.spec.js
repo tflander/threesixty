@@ -20,6 +20,9 @@ describe('The user interaction handler', () => {
     it('should return the buttons direction', ()  => {
         expect(client.getDirectionPayload(fakeEvent).direction, 'left');
     });
+    it('should return a string.', () => {
+        expect(typeof client.getZoomMeetingID()).toBe('string');
+    });
 });
 
 
