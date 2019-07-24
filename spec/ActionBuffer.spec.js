@@ -11,6 +11,11 @@ describe('The Action Buffer Class', function () {
         expect(buffer.getMaxSize()).toBe(3);
     });
 
+    it('Should allow maxSize to be set in the constructor', () => {
+        buffer = new ActionBuffer(5);
+        expect(buffer.getMaxSize()).toBe(5);
+    });
+
     it('should initialize with an empty queue', () => {
         expect(buffer.getSize()).toBe(0);
     });
