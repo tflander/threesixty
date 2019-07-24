@@ -1,6 +1,10 @@
 import platr, time
 import network, socket
 
+import config_reader
+
+wifi_ssid, wifi_password, polling_url = config_reader.loadConfig()
+
 
 def wifiConnect(ssid, password):
     sta_if = network.WLAN(network.STA_IF)
@@ -16,7 +20,7 @@ def wifiConnect(ssid, password):
 
 turntable = platr.Platr(servoPinNumber=22)
 
-localAddress, ipConfiguration = wifiConnect('TheForge', 'speed2VALUE!')
+localAddress, ipConfiguration = wifiConnect(wifi_ssid, wifi_password)
 
 commands = ["clockwiseSmall", "clockwiseMedium", "clockwiseLarge", "stop", "counterClockwiseSmall",
             "counterClockwiseMedium", "counterClockwiseLarge"]
@@ -47,18 +51,11 @@ def handleResponse(command):
             turntable.stop()
 
 
-import random
-
-
-def randomCommand():
-    return commands[random.randrange(0, len(commands))]
-
-
 import urequests
 
 while True:
 
-    response = urequests.get('https://gentle-plains-83953.herokuapp.com/command')
+    response = urequests.get(polling_url)
 
     if 200 == response.status_code:
         handleResponse(response.text)

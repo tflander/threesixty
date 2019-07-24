@@ -1,2 +1,5 @@
 node_modules
 static
+/esp32/platr_config.json
+.idea/libraries/
+.idea/workspace.xml

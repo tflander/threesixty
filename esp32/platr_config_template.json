@@ -1,0 +1,6 @@
+{
+  "wifi_ssid": "",
+  "wifi_password": "",
+  "polling_url": "",
+  "servo_pin_number": "22"
+}
