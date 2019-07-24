@@ -14,9 +14,17 @@ export default class ActionBuffer {
     getMaxSize() {
         return this[maxSizeSymbol];
     }
+
     push(actionValue) {
         if (this.getMaxSize() > this.getSize()) {
             this[queueSymbol].push(actionValue);
+        } else {
+            this.pop(); // throw away the oldest value
+            this[queueSymbol].push(actionValue);
         }
+    }
+
+    pop () {
+        return this[queueSymbol].shift();
     }
 }
