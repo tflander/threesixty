@@ -4,5 +4,10 @@ describe('The Action Buffer Class', () => {
     it('Should have a default maxSize of 3', () => {
         const buffer = new ActionBuffer();
         expect(buffer.getMaxSize()).toBe(3);
-    })
+    });
+
+    it('should initialize with an empty queue', () => {
+        const buffer = new ActionBuffer();
+        expect(buffer.getSize()).toBe(0);
+    });
 });
