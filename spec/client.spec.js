@@ -20,14 +20,24 @@ describe('The user interaction handler', () => {
     it('should return the buttons direction', ()  => {
         expect(client.getDirectionPayload(fakeEvent).direction, 'left');
     });
+    it('should return a string.', () => {
+        expect(typeof client.getZoomMeetingID(fakeEvent)).toBe('string');
+        expect(client.getZoomMeetingID(fakeEvent)).toBe('123456789');
+    });
+    it('should return a valid meeting URL', () => {
+        let meetingID = '123456789';
+        const validURL = `https://zoom.us/wc/${meetingID}/join`;
+        expect(client.getZoomMeetingURL(meetingID)).toBe(validURL);
+    });
 });
 
 
 const fakeEvent = {
     target: {
-        "dataset": {
-            "action": "left"
-        }
+        'dataset': {
+            'action': 'left'
+        },
+        'value': '123456789'
     }
 };
 
