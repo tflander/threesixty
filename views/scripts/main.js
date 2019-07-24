@@ -11,7 +11,8 @@ const SELECTORS = {
             '.most-right'
         ],
         zoomInput: 'input',
-        zoomForm: 'form'
+        zoomForm: 'form',
+        zoomIframe: 'iframe'
     }
 ;
 
@@ -24,6 +25,14 @@ function postMessage(message) {
         method: 'POST',
         body: message
     });
+}
+
+function updateMeetingURL(url) {
+    document.querySelector(SELECTORS.zoomIframe).src = url;
+}
+
+function getInputFieldElement() {
+    return document.querySelector(SELECTORS.zoomInput);
 }
 
 function initializeActionEventHandlers() {
@@ -40,9 +49,10 @@ function addEventHandler(selector, event, eventHandler) {
 }
 
 function initializeZoomMeetingHandler() {
-    addEventHandler(SELECTORS.zoomForm, 'submit', () => {});
+    addEventHandler(SELECTORS.zoomForm, 'submit', client.createFormSubmitHandler(updateMeetingURL, getInputFieldElement));
 }
 
 (function () {
     initializeActionEventHandlers();
+    initializeZoomMeetingHandler();
 })();

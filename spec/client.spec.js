@@ -11,18 +11,22 @@ describe('The Client Javscript module', () => {
 
     it('should do a post', async () => {
         const response = await client.post('something', mockPost);
-        let { data } = await axios.get(`${base_url}command`);
+        let {data} = await axios.get(`${base_url}command`);
         expect(data).toBe('something');
     });
 });
 
 describe('The user interaction handler', () => {
-    it('should return the buttons direction', ()  => {
+    it('should return the buttons direction', () => {
         expect(client.getDirectionPayload(fakeEvent).direction, 'left');
     });
     it('should return a string.', () => {
-        expect(typeof client.getZoomMeetingID(fakeEvent)).toBe('string');
-        expect(client.getZoomMeetingID(fakeEvent)).toBe('123456789');
+        expect(typeof client.getZoomMeetingID({
+            'value': '123456789'
+        })).toBe('string');
+        expect(client.getZoomMeetingID({
+            'value': '123456789'
+        })).toBe('123456789');
     });
     it('should return a valid meeting URL', () => {
         let meetingID = '123456789';
@@ -33,11 +37,12 @@ describe('The user interaction handler', () => {
 
 
 const fakeEvent = {
+    preventDefault: () => {
+    },
     target: {
         'dataset': {
             'action': 'left'
-        },
-        'value': '123456789'
+        }
     }
 };
 

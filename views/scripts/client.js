@@ -16,12 +16,24 @@ export const createButtonClickHandler = postMessageFunction => {
     };
 }
 
-export const getZoomMeetingID = event => {
+export const createFormSubmitHandler = (updateMeetingUrlFunction, getInputFieldElement) => {
+    return event => {
+        event.preventDefault();
+        const meetingID = getZoomMeetingID(getInputFieldElement());
+        console.log(meetingID);
+        if (meetingID) {
+            const meetingURL = getZoomMeetingURL(meetingID);
+            updateMeetingUrlFunction(meetingURL);
+        }
+    }
+}
+
+export const getZoomMeetingID = target => {
     let zoomMeetingID = '';
-    const value = event.target.value;
+    const value = target.value;
     return zoomMeetingID || value;
 }
 
 export const getZoomMeetingURL = meetingID => {
-   return `https://zoom.us/wc/${meetingID}/join`;
+    return `https://zoom.us/wc/${meetingID}/join`;
 }
