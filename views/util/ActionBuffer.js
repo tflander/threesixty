@@ -14,6 +14,9 @@ export default class ActionBuffer {
     getMaxSize() {
         return this[maxSizeSymbol];
     }
+    push(actionValue) {
+        this[queueSymbol].push(actionValue);
+    }
     pop() {}
     peak() {}
     reset() {}
