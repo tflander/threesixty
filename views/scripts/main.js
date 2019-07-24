@@ -1,14 +1,19 @@
 import * as client from './client'
 
 const URL = '/command';
-const SELECTORS = [
-    '.most-left',
-    '.more-left',
-    '.left',
-    '.right',
-    '.more-right',
-    '.most-right'
-];
+const SELECTORS = {
+        buttons: [
+            '.most-left',
+            '.more-left',
+            '.left',
+            '.right',
+            '.more-right',
+            '.most-right'
+        ],
+        zoomInput: 'input',
+        zoomForm: 'form'
+    }
+;
 
 function postMessage(message) {
     return fetch(URL, {
@@ -21,11 +26,23 @@ function postMessage(message) {
     });
 }
 
-(function () {
-    SELECTORS.map((selector) => {
-        const $element = document.querySelector(selector);
-        if ($element) {
-            $element.addEventListener('click', client.createButtonClickHandler(postMessage));
-        }
+function initializeActionEventHandlers() {
+    SELECTORS.buttons.map((selector) => {
+        addEventHandler(selector, 'click', client.createButtonClickHandler(postMessage));
     });
+}
+
+function addEventHandler(selector, event, eventHandler) {
+    const $element = document.querySelector(selector);
+    if ($element) {
+        $element.addEventListener(event, eventHandler);
+    }
+}
+
+function initializeZoomMeetingHandler() {
+    addEventHandler(SELECTORS.zoomForm, 'submit', () => {});
+}
+
+(function () {
+    initializeActionEventHandlers();
 })();
