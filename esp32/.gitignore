@@ -1,2 +1,4 @@
 workspace.xml
 venv/
+platr_config.json
+__pycache__/
