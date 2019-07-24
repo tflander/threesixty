@@ -16,12 +16,10 @@ export default class ActionBuffer {
     }
 
     push(actionValue) {
-        if (this.getMaxSize() > this.getSize()) {
-            this[queueSymbol].push(actionValue);
-        } else {
+        if (this.getMaxSize() <= this.getSize()) {
             this.pop(); // throw away the oldest value
-            this[queueSymbol].push(actionValue);
         }
+        this[queueSymbol].push(actionValue);
     }
 
     pop () {
