@@ -1,4 +1,4 @@
-import ActionBuffer from '../views/util/ActionBuffer';
+import ActionBuffer from '../util/ActionBuffer';
 
 describe('The Action Buffer Class', function () {
     let buffer;
