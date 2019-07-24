@@ -16,6 +16,12 @@ export const createButtonClickHandler = postMessageFunction => {
     };
 }
 
-export const getZoomMeetingID = () => {
-    return '';
+export const getZoomMeetingID = event => {
+    let zoomMeetingID = '';
+    const value = event.target.value;
+    return zoomMeetingID || value;
+}
+
+export const getZoomMeetingURL = meetingID => {
+   return `https://zoom.us/wc/${meetingID}/join`;
 }
