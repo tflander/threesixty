@@ -1,6 +1,6 @@
 const http = require('http');
 const express = require('express');
-import ActionBuffer from "./util/ActionBuffer";
+const ActionBuffer = require('./util/ActionBuffer');
 
 const PORT = process.env.PORT || 3000
 const MAX_BUFFER_SIZE = 3;
@@ -23,12 +23,17 @@ app.get('/static/style.css', (req, res) => {
 })
 
 app.get('/command', (req, res) => {
-    res.send(direction);
+    res.send(buffer.pop());
 })
 
 app.post('/command', (req, res) => {
     buffer.push(req.body.direction);
     res.sendStatus(200);
-})
+});
+
+app.post('/clear', (req, res) => {
+    buffer.reset();
+    res.sendStatus(200);
+});
 
 app.listen(PORT);

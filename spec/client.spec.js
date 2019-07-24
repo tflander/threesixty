@@ -4,6 +4,8 @@ import * as axios from 'axios';
 var base_url = "http://localhost:3000/"
 
 describe('The Client Javscript module', () => {
+    beforeEach(clearQueue);
+
     it('accepts a string command', async () => {
         const response = await client.post('moveLeft', mockPost);
         expect(response.status).toBe(200);
@@ -50,4 +52,9 @@ const mockPost = (message) => {
     return axios.post(`${base_url}command`, {
         direction: message
     });
+}
+
+
+async function clearQueue() {
+    await axios.post(`${base_url}clear`);
 }

@@ -1,4 +1,4 @@
-import ActionBuffer from '../util/ActionBuffer';
+const ActionBuffer = require('../util/ActionBuffer');
 
 describe('The Action Buffer Class', function () {
     let buffer;

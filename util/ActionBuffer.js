@@ -1,32 +1,30 @@
 const maxSizeSymbol = Symbol('Max Size');
 const queueSymbol = Symbol('queue')
 
-export default class ActionBuffer {
-    constructor(maxSize = 3) {
-        this[maxSizeSymbol] = maxSize;
-        this[queueSymbol] = new Array();
-    }
+module.exports = function ActionBuffer(maxSize = 3) {
+    this[maxSizeSymbol] = maxSize;
+    this[queueSymbol] = new Array();
 
-    getSize () {
+    this.getSize = function () {
         return this[queueSymbol].length;
     }
 
-    getMaxSize() {
+    this.getMaxSize = function () {
         return this[maxSizeSymbol];
     }
 
-    push(actionValue) {
+    this.push = function (actionValue) {
         if (this.getMaxSize() <= this.getSize()) {
             this.pop(); // throw away the oldest value
         }
         this[queueSymbol].push(actionValue);
     }
 
-    pop () {
+    this.pop = function () {
         return this[queueSymbol].shift();
     }
 
-    reset () {
+    this.reset = function () {
         this[queueSymbol] = new Array();
     }
 }

@@ -22,6 +22,7 @@ describe("server", () => {
   });
 
   describe("storing a turn command", () => {
+    beforeEach(clearQueue)
     it("stores a left turn command", async () => {
       await pushCommandDirection('left');
 
@@ -51,5 +52,9 @@ async function pushCommandDirection(newLocal) {
   await axios.post(`${base_url}command`, {
     direction: newLocal
   });
+}
+
+async function clearQueue() {
+  await axios.post(`${base_url}clear`);
 }
 
