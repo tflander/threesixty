@@ -6,18 +6,18 @@
 </head>
 
 <body>
-    <form>
-        <input type="text"/>
-        <button type="submit">Submit</button>
-    </form>
     <iframe src="https://zoom.us/wc/534752326/join" allow="microphone; camera; speaker;"></iframe>
     <div class="button-wrapper">
-        <button class="most-left most" data-action="counterClockwiseLarge">&lt;&lt;&lt;</button>
-        <button class="more-left more" data-action="counterClockwiseMedium">&lt;&lt;</button>
-        <button class="left normal" data-action="counterClockwiseSmall">&lt;</button>
-        <button class="right normal" data-action="clockwiseSmall">&gt;</button>
-        <button class="more-right more" data-action="clockwiseMedium">&gt;&gt;</button>
-        <button class="most-right most" data-action="clockwiseLarge">&gt;&gt;&gt;</button>
+        <button class="most-left most" data-action="counterClockwiseLarge" title="Turn Counter-Clockwise: Large">&lt;&lt;&lt;</button>
+        <button class="more-left more" data-action="counterClockwiseMedium" title="Turn Counter-Clockwise: Medium">&lt;&lt;</button>
+        <button class="left normal" data-action="counterClockwiseSmall" title="Turn Counter-Clockwise: Small">&lt;</button>
+        <form>
+            <input type="text" placeholder="Meeting ID"/>
+            <button class="join-button" type="submit" title="Join a meeting">Join</button>
+        </form>
+        <button class="right normal" data-action="clockwiseSmall" title="Turn Clockwise: Small">&gt;</button>
+        <button class="more-right more" data-action="clockwiseMedium" title="Turn Clockwise: Medium">&gt;&gt;</button>
+        <button class="most-right most" data-action="clockwiseLarge" title="Turn Clockwise: Large">&gt;&gt;&gt;</button>
     </div>
     <footer>
         <script src="/static/bundle.js"></script>

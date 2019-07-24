@@ -2,18 +2,45 @@ iframe {
     width: 100%;
     height: 92%;
 }
+button {
+    border-radius: 8px;
+    width: 90px;
+    height: 52px;
+    background-color: #4a4a4a;
+    font-size: 20px;
+    border-width: 4px;
+}
+button:hover {
+    box-shadow: 0 0 5px 5px white;
+    cursor: pointer;
+}
+form {
+    margin-block-end: 0;
+}
+input {
+    font-size: 24px;
+    font-weight: lighter;
+    border-width: 2px;
+    color: #232333;
+    border-radius: 8px;
+    box-shadow: none;
+    line-height: 32px;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-color: #babacc;
+}
+
+.join-button {
+    background-color: #0e71eb;
+    border-color: #0e71eb;
+}
 
 .button-wrapper {
     background-color: #333;
     display: flex;
     justify-content: space-evenly;
-}
-
-button {
-    width: 90px;
-    height: 52px;
-    background-color: #4a4a4a;
-    font-size: 20px;
+    align-items: center;
+    padding: 5px 0;
 }
 
 .most {
