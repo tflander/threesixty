@@ -31,7 +31,7 @@ app.get('/welcome', (req, res) => {
 })
 
 app.get('/logo', (req, res) => {
-    res.sendFile("./static/logo.png", { root: __dirname });
+    res.sendFile("./assets/logo.png", { root: __dirname });
 })
 
 app.post('/command', (req, res) => {
