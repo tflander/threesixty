@@ -1,18 +1,21 @@
 import platr, time
 import network, socket
-
+import machine
 import config_reader
 
 wifi_ssid, wifi_password, polling_url = config_reader.loadConfig()
 
 
 def wifiConnect(ssid, password):
+    onboardLed = machine.Pin(2, machine.Pin.OUT)
     sta_if = network.WLAN(network.STA_IF)
     sta_if.active(True)
     sta_if.connect(ssid, password)
     print('waiting for connection...')
+    onboardLed.on()
     while not sta_if.isconnected():
         time.sleep_ms(200)
+    onboardLed.off()
 
     addr = socket.getaddrinfo('0.0.0.0', 80)[0][-1]
     return addr, sta_if.ifconfig()
