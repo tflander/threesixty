@@ -12,7 +12,7 @@ def wifiConnect(ssid, password):
     sta_if.connect(ssid, password)
     print('waiting for connection...')
     while not sta_if.isconnected():
-        pass
+        time.sleep_ms(200)
 
     addr = socket.getaddrinfo('0.0.0.0', 80)[0][-1]
     return addr, sta_if.ifconfig()
