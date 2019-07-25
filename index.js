@@ -30,6 +30,10 @@ app.get('/welcome', (req, res) => {
     res.sendFile("./views/welcome.html", { root: __dirname });
 })
 
+app.get('/logo', (req, res) => {
+    res.sendFile("./static/logo.png", { root: __dirname });
+})
+
 app.post('/command', (req, res) => {
     buffer.push(req.body.direction);
     res.sendStatus(200);

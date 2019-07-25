@@ -11,6 +11,12 @@ button {
     border-width: 4px;
 }
 
+h2 {
+    font-family: "Graphik-Black", "Arial Black", sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+}
+
 .zoom-frame{
     max-height: 80%;
 }
@@ -51,6 +57,10 @@ input {
     justify-content: center;
     flex-direction: column;
     height: 100%;
+    background-image: url("/logo");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-position: right;
 }
 
 .button-wrapper {
