@@ -45,6 +45,14 @@ input {
     width: 99%;
 }
 
+.welcome-message{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+}
+
 .button-wrapper {
     background-color: #333;
     display: flex;

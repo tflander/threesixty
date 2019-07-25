@@ -26,6 +26,10 @@ app.get('/command', (req, res) => {
     res.send(buffer.pop());
 })
 
+app.get('/welcome', (req, res) => {
+    res.sendFile("./views/welcome.html", { root: __dirname });
+})
+
 app.post('/command', (req, res) => {
     buffer.push(req.body.direction);
     res.sendStatus(200);
