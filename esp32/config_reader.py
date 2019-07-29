@@ -9,7 +9,6 @@ config_dict = ujson.loads(config_file.read())
 config_file.close()
 
 def loadConfig():
-    wifi_ssid = config_dict['wifi_ssid']
-    wifi_password = config_dict['wifi_password']
+    wifi_credentials = config_dict['wifi']
     polling_url = config_dict['polling_url']
-    return wifi_ssid, wifi_password, polling_url
+    return wifi_credentials, polling_url
