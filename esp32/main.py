@@ -2,7 +2,7 @@ import platr, time
 import network, socket
 import machine
 import config_reader
-import espNetConfig
+import esp32_net_config
 
 polling_url = config_reader.loadConfig()
 
@@ -39,7 +39,7 @@ def handleResponse(command):
 
 import urequests
 
-espNetConfig.connect_network_or_go_into_config_mode()
+esp32_net_config.connect_network_or_go_into_config_mode()
 
 while True:
 
