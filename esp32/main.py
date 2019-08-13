@@ -39,7 +39,7 @@ def handleResponse(command):
 
 import urequests
 
-esp32_net_config.connect_network_or_go_into_config_mode()
+esp32_net_config.connect_network_or_go_into_config_mode('PlatrConfig')
 
 while True:
 
