@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 export AMPY_PORT=/dev/cu.SLAB_USBtoUART
-
+echo 'removing all files...'
+ampy rmdir .
 echo 'this could take a while...'
 ampy put ../boot.py
 ampy put ../main.py
@@ -10,10 +11,11 @@ ampy put ../platr.py
 ampy put ../platr_config.json
 
 echo 'rebooting...'
-ampy run reboot.py
+#ampy run reboot.py
+ampy reset
 echo 'files:'
 ampy ls
-sleep 5
+#sleep 5
 echo 'installing dependencies'
 ampy run postinstall.py
 
